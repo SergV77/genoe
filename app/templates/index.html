@@ -1,20 +1,47 @@
 {% extends "base.html" %}
 {% import 'bootstrap/wtf.html' as wtf %}
-{% block content %}
-    <br>
-    <h1>Диагностика заболевания</h1>
-    <br>
-    <div >
-        <form action="" method="post" novalidate>
-            <h3>Пожайлусто введите свои симптомы</h3><br>
-            <div class="mb-3">
-                {{ form.hidden_tag() }}
-                <div id="exampleInputEmail1">{{ wtf.form_field(form.text) }}</div>
-                <div id="emailHelp" class="form-text">Введите свои симптомы через запятую</div>
-            </div>
-            <div class="btn btn-primary">{{ wtf.form_field(form.submit) }}</div>
-        </form>
+
+{% block title %}Диагностика{% endblock %}
+
+{% block message_content %}
+<br>
+<h1>Диагностика заболевания</h1>
+<br>
+<form action="" method="POST" role="form" class="form">
+    {{ form.hidden_tag() }} {{ wtf.form_errors(form, hiddens="only") }}
+    <div class="input-group">
+      {{ form.text(class="form-control", placeholder="Введите симптомы") }}
     </div>
+    <br>
+    {{ form.submit(class="btn btn-primary") }}
+</form>
+
+
+
+
+<!--{{ wtf.quick_form(form) }}-->
+
+<br>
+<div class="page-header">
+  <h1>{% if messages %}{{ messages }}{% else %}Добрый день! Симптомов нет.{% endif %}</h1>
+</div>
+
 {% endblock %}
 
+
+
+
 <!--<div id="exampleInputEmail1" >{{ wtf.quick_form(form) }}</div>-->
+
+
+<!-- <div>-->
+<!--        <form action="" method="post" novalidate>-->
+<!--            <h3>Пожайлусто введите свои симптомы</h3><br>-->
+<!--            <div class="mb-3">-->
+<!--                {{ form.hidden_tag() }}-->
+<!--                <div id="exampleInputEmail1">{{ wtf.form_field(form.text) }}</div>-->
+<!--                <div id="emailHelp" class="form-text">Введите свои симптомы через запятую</div>-->
+<!--            </div>-->
+<!--            <div class="btn btn-primary">{{ wtf.form_field(form.submit) }}</div>-->
+<!--        </form>-->
+<!--    </div>-->

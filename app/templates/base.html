@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css', _external=True) }}" rel="stylesheet">
 <!--    <link href="{{ url_for('static', filename='css/bootstrap-responsive.css') }}" rel="stylesheet">-->
     {% if title %}
     <title>{{title}}</title>
@@ -47,18 +47,7 @@
     {% endblock %}
 
     <div class="container-xl">
-      {% block content %}{% endblock %}
-    </div>
-
-    <div class="container-xl">
-      {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        {% for message in messages %}
-            <div class="alert alert-info" role="alert">{{ message }}</div>
-            {% endfor %}
-        {% endif %}
-      {% endwith %}
-
+      {% block message_content %}{% endblock %}
     </div>
 
     <script src="http://code.jquery.com/jquery-latest.js"></script>

@@ -5,7 +5,10 @@ from wtforms.validators import Required
 
 
 class RequestForm(FlaskForm):
-    text = StringField(label="Симптомы:", validators=[Required()])
-    submit = SubmitField('Отправить', id="btn btn-primary")
+    text = TextAreaField(validators=[Required()])
+    submit = SubmitField('Отправить')
 
+class NameForm(FlaskForm):
+    name = StringField('What is you name?', validators=[Required()])
+    submit = SubmitField('Submit')
 
