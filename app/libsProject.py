@@ -23,5 +23,15 @@ from sklearn.preprocessing import LabelEncoder, StandardScaler # Функции 
 from sklearn import preprocessing # Пакет предварительной обработки данных
 from sklearn.model_selection import train_test_split
 
+
 from flask import Flask
 from flask import request
+
+import os
+import numpy as np
+
+import tensorflow as tf
+from tensorflow import keras
+from tensorflow.keras.models import Model, Sequential, load_model
+
+import pickle

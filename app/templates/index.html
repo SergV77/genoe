@@ -7,7 +7,7 @@
 <br>
 <h1>Диагностика заболевания</h1>
 <br>
-<form action="" method="POST" role="form" class="form">
+<form action="" method="POST" role="form" class="form" name="form">
     {{ form.hidden_tag() }} {{ wtf.form_errors(form, hiddens="only") }}
     <div class="input-group">
       {{ form.text(class="form-control", placeholder="Введите симптомы") }}
@@ -16,14 +16,18 @@
     {{ form.submit(class="btn btn-primary") }}
 </form>
 
-
-
-
 <!--{{ wtf.quick_form(form) }}-->
 
 <br>
 <div class="page-header">
-  <h1>{% if messages %}{{ messages }}{% else %}Добрый день! Симптомов нет.{% endif %}</h1>
+  <h1>{% if messages %}
+        Вероятный диагноз: <br><br>
+        {% for k, v in messages.items() %}
+            <h2>{{ k }}  -  {{ v }}%</h2>
+        {% endfor %}
+      {% endif %}
+  </h1>
+
 </div>
 
 {% endblock %}
@@ -32,7 +36,17 @@
 
 
 <!--<div id="exampleInputEmail1" >{{ wtf.quick_form(form) }}</div>-->
-
+<!--<div class="page-header">-->
+<!--  <h1>{% if messages %}-->
+<!--        {% for k, v in messages.items() %}-->
+<!--            Вероятный диагноз: <br><br>-->
+<!--            <h2>{{ k }}  -  {{ v }}%</h2>-->
+<!--        {% endfor %}-->
+<!--      {% else %}-->
+<!--        Добрый день! Симптомов нет.-->
+<!--      {% endif %}-->
+<!--  </h1>-->
+<!--</div>-->
 
 <!-- <div>-->
 <!--        <form action="" method="post" novalidate>-->
