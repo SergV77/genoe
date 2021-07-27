@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block title %}Диагностика{% endblock %}
+
+{% block message_content %}
+<br>
+<h1>Диагностика заболевания ЭАТ UMKB</h1>
+<br>
+<form action="" method="POST" role="form" class="form" name="form">
+    {{ form.hidden_tag() }} {{ wtf.form_errors(form, hiddens="only") }}
+    <div class="input-group">
+      {{ form.text(class="form-control", placeholder="Введите симптомы") }}
+    </div>
+    <br>
+    {{ form.submit(class="btn btn-primary") }}
+</form>
+<br>
+<div class="page-header">
+  <h1>{% if messages %}
+        Вероятный диагноз: <br><br>
+        {% for k, v in messages.items() %}
+            <h2>{{ k }}  -  {{ v }}%</h2>
+        {% endfor %}
+      {% endif %}
+  </h1>
+
+</div>
+
+{% endblock %}
+
+

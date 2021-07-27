@@ -3,9 +3,9 @@ from app import app
 from . import forms
 from .forms import RequestForm, NameForm
 from .recognizerDisease import *
+from .parsConcept import *
 
 # model_BOW = keras.models.load_model('models/model_BOW_best202107152')
-
 
 
 @app.route('/',  methods=['GET', 'POST'])
@@ -19,6 +19,29 @@ def index():
         form.text.data = ''
 
     return render_template('index.html', form=form, messages=messages)
+
+@app.route('/umkb',  methods=['GET', 'POST'])
+def umkb():
+    form = RequestForm()
+    messages = None
+
+    if form.validate_on_submit():
+        messages = form.text.data
+        messages = post_pars_concept(messages)
+        print(messages)
+        messages = recognizerDiseaseConcepts(messages)
+        # messages = dict(sorted(messages.items(), key=lambda x: x[1], reverse=True))
+        form.text.data = ''
+
+    return render_template('umkb.html', form=form, messages=messages)
+
+@app.route('/analytics',  methods=['GET', 'POST'])
+def analytics():
+    return render_template('analytics.html')
+
+@app.route('/information',  methods=['GET', 'POST'])
+def information():
+    return render_template('information.html')
 
 
 

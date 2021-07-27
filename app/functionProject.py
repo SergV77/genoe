@@ -1,5 +1,9 @@
 from .libsProject import *
 
+def open_dict(path):
+    with open(path, 'rb') as f:
+        return pickle.load(f)
+
 
 # преобразуем текст в слова
 def text2Words(text):
