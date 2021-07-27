@@ -130,6 +130,8 @@ def recognizerDiseaseConcepts(concepts):
         sym = translateDis(dictClass_umkb, key)
         result[sym] = round(value, 2)
 
+    result = dict(sorted(result.items(), key=lambda x: x[1]))
+
     return result
 
 #
