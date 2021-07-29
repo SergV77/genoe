@@ -30,7 +30,7 @@ def umkb():
         messages = post_pars_concept(messages)
         print(messages)
         messages = recognizerDiseaseConcepts(messages)
-        # messages = dict(sorted(messages.items(), key=lambda x: x[1], reverse=True))
+        messages = dict(sorted(messages.items(), key=lambda x: x[1], reverse=True))
         form.text.data = ''
 
     return render_template('umkb.html', form=form, messages=messages)

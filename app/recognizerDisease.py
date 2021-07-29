@@ -100,7 +100,7 @@ def recognizerDiseaseConcepts(concepts):
     nClasses = len(classes)
     xLen = libs_umkb['xLen']
     maxConceptsCount = len(vocabulary)
-    print(classes)
+
 
     # преобразуем полученный массив концептов в массив индексов согласно словаря
     conceptIndexes = []
