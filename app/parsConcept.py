@@ -3,7 +3,7 @@ from .libsProject import *
 def post_pars_concept(text):
     conceptId = []
     url = 'https://cs.socmedica.com/api/pars/ParsingConcept'
-    param = {'key': '9244f7d34ca284b1',
+    param = {'key': '********************',
              'lib': [25],
              'text': text
              }
